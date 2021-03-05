@@ -56,7 +56,7 @@ def twoSum(nums, target):
         for k in range (i+1,length1):
             sum=nums[i]+nums[k]
             if sum==target:
-                nums=[nums[i],nums[k]]
+                nums=[i,k]
                 return nums
 
 result=twoSum([2, 11, 7, 15], 9)
