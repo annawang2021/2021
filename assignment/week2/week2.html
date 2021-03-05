@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week2</title>
+</head>
+<body>
+    <script>
+    // 要求一
+    function calculate(min,max){
+        var sum =0;
+        for (var min ; min<=max ; min++) {
+            sum+=min;
+        }
+        return sum;
+    }
+        
+    console.log(calculate(1,3));
+    console.log(calculate(4,8));
+
+
+    // 要求二
+    function avg(data){ 
+        var sum=0;
+        var i=0;
+
+        for(i=0 ; i<data.count ; i++){
+            sum += data.employees[i].salary;
+            }
+        return ( sum/ data.count);
+    }
+
+    console.log (avg({
+                      "count":3,
+                      "employees":[
+                                    {"name":"John","salary":30000},
+                                    {"name":"Bob","salary":60000},
+                                    {"name":"Jenny","salary":50000}
+                ]})); // 呼叫 avg 函式
+
+    // 要求三
+    var MaxResult;
+    function maxProduct (numbs){
+        var length = numbs.length;
+        MaxResult=numbs[0] *numbs[1];
+
+        for (var i=0 ; i < length ; i++){ 
+           // numbs[i];
+
+            for (var k= i+1 ; k < length ; k++){
+                //numbs [k];
+                var sum = numbs[i]*numbs[k];
+
+                if(sum>MaxResult){
+                    MaxResult = sum;
+                }
+            }   
+        }
+        return MaxResult;
+    }
+    
+    console.log (maxProduct([5, 20, 2, 6])); // 得到 120 因為 20 和 6 相乘得到最大值
+    console.log (maxProduct([10, -20, 0, 3])); // 得到 30 因為 10 和 3 相乘得到最大值
+
+    // 要求四
+    function twoSum(nums, target){
+        var length= nums.length;
+        
+        for (var i=0 ; i < length ; i++){
+            
+            for (var k=i+1 ; k < length ; k++){
+                var test =nums [i] + nums [k] ;
+                
+                   if (test == target){
+                       nums  = [nums[i], nums[k]];
+                       return nums;  
+                   }
+            }
+        }
+            
+    }
+    result=twoSum([2, 11, 7, 15], 9);
+    console.log(result);//7
+    // show [0, 2] because nums[0]+nums[2] is 9     
+
+    </script>
+</body>
+</html>
