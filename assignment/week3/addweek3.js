@@ -4,10 +4,10 @@ fetch (src).then(function (response){
     return response.json();
 
 }).then(function (data){
-    var length = Object.keys(data.result.results).length;
+    //var length = Object.keys(data.result.results).length;
     var main = document.querySelector (".main");
       
-    for ( var i=0; i < length ; i++) {
+    for ( var i=0; i < 8 ; i++) {
 
         var stitle = data.result.results[i].stitle;
         var imageFile = data.result.results[i].file;
