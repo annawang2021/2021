@@ -17,7 +17,6 @@ fetch (src).then(function (response){
             if (i%4==0){
                 var container= document.createElement("div");
                 container.setAttribute ("class","container");
-                container.setAttribute ("id","itembox");
                 main.appendChild(container);
             }
 
@@ -25,7 +24,6 @@ fetch (src).then(function (response){
             var imgElement = document.createElement("img");
                 imgElement.setAttribute ("src",file);
             var figcaptionElement = document.createElement("figcaption");
-                figcaptionElement.setAttribute ("id","fontsize")
             var spots = document.createTextNode (stitle);
                 figcaptionElement.appendChild(spots);
             figureElement.appendChild(imgElement);
