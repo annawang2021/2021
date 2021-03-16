@@ -11,7 +11,7 @@ nav{
 }
 .logo{
     flex:none;
-    width-right: 5vw;
+    margin-left: 1.5vw;
 }
 .white{
     flex: auto;
