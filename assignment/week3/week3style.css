@@ -12,6 +12,7 @@ nav{
 .logo{
     flex:none;
     margin-left: 1.5vw;
+    color: red;
 }
 .white{
     flex: auto;
