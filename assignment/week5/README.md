@@ -24,8 +24,9 @@
  
 5. 使用 SELECT 指令取得 user 資料表中第 2 ~ 4 共三筆資料，並按照 time 欄位，由近到遠排序。
  
-      ![5](https://user-images.githubusercontent.com/77376405/112738018-32814400-8f9a-11eb-8b07-265b9fd1218e.png)
-
+      ![3-5-1](https://user-images.githubusercontent.com/77376405/112748052-e0690e80-8feb-11eb-83d8-8d9d466fb61f.png)
+      
+      ![3-5-2](https://user-images.githubusercontent.com/77376405/112748061-eced6700-8feb-11eb-8a95-12d2d3f6719a.png)   
 
 6. 使用 SELECT 指令取得欄位 username 是 ply 的使用者資料。
 
