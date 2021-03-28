@@ -59,5 +59,6 @@
       
 2.使用 SELECT 搭配 JOIN 的語法，取得 user 資料表中欄位 username 是 ply 的所有留言，資料中須包含留言會員的姓名。
 
-      ![4-2](https://user-images.githubusercontent.com/77376405/112738510-77a77500-8f9e-11eb-95f6-75797302c161.png)
+      ![Uploading 4-2.PNG…]()
+
       
