@@ -50,15 +50,17 @@
 
       ![1](https://user-images.githubusercontent.com/77376405/112738114-f3072780-8f9a-11eb-8ac1-01315a789be0.png)
       
-      table user 目前所有資料↓
       ![2](https://user-images.githubusercontent.com/77376405/112738110-ee427380-8f9a-11eb-9d9e-1034d49d0c2e.png)
       
-      table message 目前所有資料表↓
       ![3](https://user-images.githubusercontent.com/77376405/112738105-e71b6580-8f9a-11eb-8106-c61734394573.png)
       
       
 2.使用 SELECT 搭配 JOIN 的語法，取得 user 資料表中欄位 username 是 ply 的所有留言，資料中須包含留言會員的姓名。
 
-      ![Uploading 4-2.PNG…]()
+   ![4-2](https://user-images.githubusercontent.com/77376405/112738686-32844280-8fa0-11eb-949f-3988304e5454.png)
+  
+
+
+
 
       
