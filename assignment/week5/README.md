@@ -42,6 +42,11 @@
       
 9. 使用 DELETE 指令刪除所有在 user 資料表中的資料。
 
+     ![9-1](https://user-images.githubusercontent.com/77376405/112738900-f520b480-8fa1-11eb-9766-1d742b489c81.png)
+
+
+
+
 
 
 要求四
