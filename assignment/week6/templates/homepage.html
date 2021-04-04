@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>week6登入系統</title>
+    <!-- <link href="‪D:\彭彭_每週作業\week6\static\week6style.css" rel="stylesheet" media="all"> -->
+    <link href="https://annawang2021.github.io/2021/assignment/week6/static/week6style.css" rel="stylesheet" media="all">
+  </head>
+
+  <body>
+    <h3>歡迎光臨，請輸入帳號密碼</h3>
+
+    <div  class="container">
+    <form class="sign_in_section" action="/signup" method="POST">註冊帳號<br/>
+        <label>姓名 <input type="text" name="realName" /></label><br/>
+        <label>帳號 <input type="text" name="userName" /></label><br/>
+        <label>密碼 <input type="password" name="password" /></label><br/>
+        <button>註冊</button>
+
+    </form>
+
+    <br/>
+
+    <form class="log_in_section" action="/signin" method="POST">
+        登入系統 <br/>
+        <label>帳號 <input type="text" name="userName"  autofocus placeholder="abcd" required/></label> <br/>
+        <label>密碼 <input type="password" name="password" /></label> <br/>
+        <!-- <input type="submit" value="送出" class="submit_btn"/><br/> -->
+        <button>點擊送出</button>
+        
+    </form>
+
+    </div>
+
+  </body>
+</html>
