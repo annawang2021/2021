@@ -20,18 +20,17 @@ def home():
     if "userName" in session:
         return redirect(url_for("member")) 
     else:
-        return render_template ("homepage.html") 
+        return render_template("homepage.html") 
     
 
 @app.route("/member/")
 def member():
-    return render_template("week6_member.html")
+  return render_template("week6_member.html") 
 
 @app.route("/error/")
 def error():
-    failMessage = request.args.get ("message", "帳號或密碼輸入錯誤")
-    return render_template("week6_error.html", failMessage = failMessage)
-
+    fail_login = request.args.get ("message", "帳號或密碼輸入錯誤")
+    return render_template("week6_error.html" )+ "<h4 align='center'>"+fail_login+"</h4>"
 
 
 @app.route("/signup", methods=["POST", "GET"])
@@ -48,15 +47,15 @@ def signup():
         userName_db = result[i][2]
 
         if userName == userName_db:
-            flash('帳號已經被註冊')
-            return render_template ("week6_error.html")
+            # flash('帳號已經被註冊')
+            return render_template("week6_error.html", failMessage ="很抱歉，帳號已被註冊，請再試一次")
 
         elif (i==(count-1)) and (request.method == "POST"): #比到最後一筆，如果沒有相同資料，建立新會員資料+存入資料庫
             sql = "INSERT INTO user (realName, userName, password) VALUES (%s, %s, %s)"
             val = (realName, userName, password)
             mycursor.execute(sql, val)
             mydb.commit()
-            return render_template("homepage.html")
+            return redirect(url_for("home"))
       
 
 @app.route("/signin", methods=["POST"])
@@ -79,7 +78,7 @@ def signin():
             return render_template("week6_member.html", realname=realName_db)
             # flash(realName_db)
             # return redirect(url_for("member") )
-            
+
         elif (i==(count-1)) and (request.method == "POST"):
             return redirect(url_for("error") ) 
     
