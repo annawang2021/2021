@@ -11,7 +11,8 @@
     <div class="member">
         Hello, {{realname}}
         
-        <!-- {% with messages = get_flashed_messages() %}
+        <!--也可以使用flash()顯示
+        {% with messages = get_flashed_messages() %}
         {% if messages %}
           {% for message in messages %}
             {{message}} 
