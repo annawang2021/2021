@@ -10,17 +10,14 @@
     <h3>失敗頁面</h3>
 
     <div class="error">
-      <!-- 帳號已被註冊，用flash()顯示 -->
-      {% with messages = get_flashed_messages() %}
+       <!-- 帳號已被註冊，用flash()顯示 -->
+      <!-- {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for message in messages %}
           {{message}} 
         {% endfor %} 
       {% endif %} 
-      {% endwith %} 
-      
-      <!-- 帳號已被註冊，用render_template顯示 -->
-      {{failMessage}} 
+      {% endwith %}  -->
       <br/>
         <a href="/">返回首頁</a>
     </div>
