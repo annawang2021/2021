@@ -8,7 +8,7 @@ app.secret_key = b'\xc1@\xbbnla\x8a8\x97\xc4\x97e(K\xea\n'
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="root",
+  password="",
   database="membership"
 )
 
