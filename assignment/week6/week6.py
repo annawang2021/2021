@@ -8,7 +8,7 @@ app.secret_key = b'\xc1@\xbbnla\x8a8\x97\xc4\x97e(K\xea\n'
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="",
+  password="root",
   database="membership"
 )
 
@@ -29,58 +29,68 @@ def member():
 
 @app.route("/error/")
 def error():
-    fail_login = request.args.get ("message", "帳號或密碼輸入錯誤")
-    return render_template("week6_error.html" )+ "<h4 align='center'>"+fail_login+"</h4>"
+    message = request.args.get ("message", "帳號或密碼輸入錯誤")
+    return render_template("week6_error.html" )+ "<h4 align='center'>"+message+"</h4>"
 
 
-@app.route("/signup", methods=["POST", "GET"])
+@app.route("/signup", methods=["POST"])
 def signup():
     realName = request.form["realName"]
-    userName = request.form["userName"] #type 是 string
+    userName = request.form["userName"] 
     password = request.form["password"]
 
-    mycursor.execute("select * from user")
+    # check = "SELECT * FROM user WHERE userName = %s" %(userName) #格式化字串%g語法： %s(字串)，%d (十進位整數)，%f(小數點)
+    check = f"select * from user where userName='{userName}'" #格式化字串f-string語法
+    # check ="select * from user where username={k}" .format(k=userName) #格式化字串.formant()語法
+    print (check)
+
+    mycursor.execute(check)
+
     result = mycursor.fetchall()
+    # print (result)
+
     count = len (result)
+    # print (count)
     
-    for i in range (count):
-        userName_db = result[i][2]
+    if count > 0:
+        # flash('帳號已經被註冊')
+        return render_template("week6_error.html", failMessage ="很抱歉，帳號已被註冊，請再試一次")
 
-        if userName == userName_db:
-            # flash('帳號已經被註冊')
-            return render_template("week6_error.html", failMessage ="很抱歉，帳號已被註冊，請再試一次")
-
-        elif (i==(count-1)) and (request.method == "POST"): #比到最後一筆，如果沒有相同資料，建立新會員資料+存入資料庫
-            sql = "INSERT INTO user (realName, userName, password) VALUES (%s, %s, %s)"
-            val = (realName, userName, password)
-            mycursor.execute(sql, val)
-            mydb.commit()
-            return redirect(url_for("home"))
+    else:
+        sql = "INSERT INTO user (realName, userName, password) VALUES (%s, %s, %s)"
+        val = (realName, userName, password)
+        mycursor.execute(sql, val)
+        mydb.commit()
+        return redirect(url_for("home"))
       
 
 @app.route("/signin", methods=["POST"])
 def signin():
     userName = request.form["userName"]
-    password = request.form["password"]
+    password= request.form["password"]
 
-    mycursor.execute("select * from user")
-    result = mycursor.fetchall() #result的資料型態是list包著tuple
-    count = len (result) #計算長度
+    check = f"select * from user where userName='{userName}' and password = '{password}'"
+    # print (check)
+    mycursor.execute(check)
+    result = mycursor.fetchall() 
+    # print (result) 
+    count = len (result)
+    # print (count)#1
+    
+    if count > 0:
+        info = f"select * from user where userName ='{userName}' and password = '{password}'"
+        mycursor.execute(info)
+        result= mycursor.fetchall()
+        # print (result[0][1]) 
+        
+        session["userName"] = userName
+        session["password"] = password 
+        return render_template("week6_member.html", realname = result[0][1])
+        # flash(result[0][1])
+        # return redirect(url_for("member") )
 
-    for i in range (count):
-        realName_db = result[i][1]
-        userName_db = result[i][2]
-        password_db = result[i][3]
-
-        if (userName == userName_db) and (password == password_db) and (request.method == "POST"):
-            session["userName"] = userName
-            session["password"] = password 
-            return render_template("week6_member.html", realname=realName_db)
-            # flash(realName_db)
-            # return redirect(url_for("member") )
-
-        elif (i==(count-1)) and (request.method == "POST"):
-            return redirect(url_for("error") ) 
+    else:
+        return redirect(url_for("error") ) 
     
 
 @app.route("/signout")
