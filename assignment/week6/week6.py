@@ -29,8 +29,8 @@ def member():
 
 @app.route("/error/")
 def error():
-    message = request.args.get ("message", "帳號或密碼輸入錯誤")
-    return render_template("week6_error.html" )+ "<h4 align='center'>"+message+"</h4>"
+    failLogin = request.args.get ("message", "帳號或密碼輸入錯誤")
+    return render_template("week6_error.html", failLogin= message)
 
 
 @app.route("/signup", methods=["POST"])
