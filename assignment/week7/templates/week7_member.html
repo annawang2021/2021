@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>會員登入成功</title>
+    <link href="https://annawang2021.github.io/2021/assignment/week7/static/week7style.css" rel="stylesheet" media="all">
+  </head>
+
+  <body>
+    <h3>歡迎光臨，這是會員頁</h3>
+    <div class="member">
+        Hello, {{realname}} 
+        
+        <!-- 也可以使用flash()顯示
+          {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            {{message}} 
+          {% endfor %} 
+        {% endif %}
+        {% endwith %} -->
+
+        歡迎您登入系統<br/>
+       <a href="/signout">登出系統</a>
+    </div>
+    <br/>
+    <br/>
+
+    <div class="search">
+      <form id="form"> 查詢會員姓名 <br/>
+        <label><input type="search" name="username" id="username" autofocus/></label>
+        <button type="submit" id="btn">送出查詢</button>
+      </form>
+      <br/>
+      <div id="search_db"></div>
+      
+    </div>
+    
+    <script type= "text/javascript" >
+        let btn = document.getElementById("btn");
+                  
+        btn.addEventListener('click',(e)=>{
+          e.preventDefault();
+          let formTag=document.getElementById("form");
+          let username = formTag[0].value;     
+          let src="/api/users?username="+username;
+        
+          fetch (src).then(function (response){ 
+            return response.json();           
+            }).then(function (search_result){
+                    ///console.log(search_result); //{id: 28, name: "白熊", username: "white"}
+                  let len = Object.values(search_result.data).length //Object.values(物件名稱)，將物件轉換成array，用.length計算array長度
+                    //console.log(len);
+                  if (len==3){
+                        document.getElementById("search_db").innerHTML=search_result.data.name;
+                  }else{
+                      document.getElementById("search_db").innerHTML="很抱歉，查無該會員的資料";
+                  } 
+          })
+        })
+     
+    </script>
+
+    
+  </body>
+</html>
