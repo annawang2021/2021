@@ -26,12 +26,12 @@ def home():
 @app.route("/member/")
 def member():
     realname = session.get('realName')
-    return render_template("week6_member.html", realname=realname) 
+    return render_template("week7_member.html", realname=realname) 
 
 @app.route("/error/")
 def error():
     message = request.args.get ("message", "帳號或密碼輸入錯誤")
-    return render_template("week6_error.html", failLogin=message )
+    return render_template("week7_error.html", failLogin=message )
 
 
 @app.route("/signup", methods=["POST"])
@@ -55,7 +55,7 @@ def signup():
     
     if count > 0:
         # flash('帳號已經被註冊')
-        return render_template("week6_error.html", failMessage ="很抱歉，帳號已被註冊，請再試一次")
+        return redirect(url_for("error"))
 
     else:
         sql = "INSERT INTO user (realName, userName, password) VALUES (%s, %s, %s)"
