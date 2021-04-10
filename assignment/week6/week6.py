@@ -25,7 +25,8 @@ def home():
 
 @app.route("/member/")
 def member():
-  return render_template("week6_member.html") 
+    realname = session.get('realName')
+    return render_template("week6_member.html", realname=realname) 
 
 @app.route("/error/")
 def error():
@@ -84,10 +85,9 @@ def signin():
         # print (result[0][1]) 
         
         session["userName"] = userName
-        session["password"] = password 
-        return render_template("week6_member.html", realname = result[0][1])
+        session["realName"] = result[0][1]
         # flash(result[0][1])
-        # return redirect(url_for("member") )
+        return redirect(url_for("member") )
 
     else:
         return redirect(url_for("error") ) 
