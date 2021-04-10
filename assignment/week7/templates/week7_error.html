@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+  <head>   
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>會員登入失敗</title>
+    <link href="https://annawang2021.github.io/2021/assignment/week7/static/week7style.css" rel="stylesheet" media="all">
+  </head>
+
+  <body>
+    <h3>失敗頁面</h3>
+
+    <div class="error">
+      <!-- 帳號已被註冊，用flash()顯示 -->
+      <!-- {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          {{message}} 
+        {% endfor %} 
+      {% endif %} 
+      {% endwith %}  -->
+       
+      {{failLogin}}
+      <br/>
+        <a href="/">返回首頁</a>
+    </div>
+
+    
+    
+
+  </body>
+</html>
